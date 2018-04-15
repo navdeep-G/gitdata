@@ -1,4 +1,4 @@
 GitData
 =======
 
-**GitData** is a library to help teams understand their GitHub PRs, issues, milestones, etc.
+**GitData** is a library that helps teams understand their GitHub project data (PRs, issues, milestones, etc.)
