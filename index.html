@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>GitData</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#157878">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/cayman.css">
+    <meta name="description" content="Download GitHub PRs as a CSV.">
+</head><body data-gr-c-s-loaded="true" data-pinterest-extension-installed="cr2.0.5">
+	<section class="page-header">
+     <h1>Export GitHub Project Data as a CSV</h1>
+	<!-- Pull Request icon by Icons8 -->
+	<img class="icon icons8-Pull-Request" width="48" height="48" 
+	src="data:image/png;base64,
+	iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACh0lEQVRoQ+2Zv24TQRDGv4lBaYIIb4AlO7ILC+8TxJZw75RJZcqkSR7BeQOqUJIqlKQnks9PcJZAXEQsOW+AIyiIdHeL9vyHgM43t7c52Ra7zRW7mtvf983MSruENR+05vuHBVi2g+
+	kcOLtog+gYUtZBtA3AAXCKw331XThcb3guqqVOnpA8wGTzHxdsohkH4Y5G27j3ewDVRaXE/8OAkA9+duGAaDf2H1L2cXTQeDjnfhvVEQY9AMopLB/g3Qe5UCApxzg6eDGbd71hB4T3jKBjAAMQOQjDvqiWE9OQM4d3IAkAuMPhfqS0GikB/t3TJTYLb0SxqMC0Bw+
+	QIYVkGDgEPI9Loag+fvmqGbQl0Jmuu8VGYU/sFAe6BGkAMhWxvPcdAr1KqgHXG70E/PNpjd1isyB0neABlCSqEwEnW0+f7P70A0AVL1H3sdqo693MGsWlqJT2dFxIBzDL8ethVNCP3VmUE5KCQZROUjZ1CnslAKIGcD18C0AdlqeiWu6mdWF1ALybBoh6Kj1FtfzX
+	2ZIEszoA0ekdfAcwFpXS/GzhnFgZgGkaadeYBeAs1pl3M3Q564COwtxa60AeCnExH85bBzi1sijExbQO5K1Q3vHtOaCjMLc2S41ZBzhVdeatA5xaWRTiYtpzIG+F8o7/n3Shq69tIDx+toHGjzDS1FHXH2jVjC5m5+4YxOcdmASPfx+QsmkMYRifB/j0Ofl9oFV
+	LfYcTWw+G8XmAqy+L3wcgx3hdS32HEwtgGN8MQMo7tGrz9wGdjvMn/xMEShGfBzC0mIUyjM8DGBYZC2AYnwdQO1A/kcEJAPWyoq7A+wC6xh1oRmcQPx0AK+PyFliA5Wk/+fPaO/Ab4Vy0QJaLZmwAAAAASUVORK5CYII=">
+	<!-- Merge Git icon by Icons8 -->
+	<img class="icon icons8-Merge-Git" width="48" height="48" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACM0lEQVRoQ+2Zv0oDQRDGv/UiNorJE0ggQlIEsk+QBEytrXaW2ugj6CPYxDZVLE1
+	vivgCBlFUUFDBB7ighYLnyF4SEMmf2dsN6+EdhDS3s/Obb2Z3JhGI+SNi7j8SANcK8hWoNzcgxB6IShAiDaAD4BA7m+rb2cMD6Dt/OsbLqksILkAHQpRHAhCdY3er4koCHsDxCY11kMjH7lYmvgBADzubqiacPDwF6s2Yp1Dsi1glh4IA9hfnU+W3zwBQxSvEgcs
+	TSLnFS6Ef2d29ewgLWuZz2mtnUSTaTiQAlmVIFLAcUG1ziQLaIbO84P8pcHH3QCH1gpeR2axvOaDa5iIrAKKqLKw6HWaMbmIARzKf29cOmeUF0RUAfJAnZSH7ZNknLXMmAGqjjsznqlo7/n65fbMBfO0BVAIGszbRIWpFVnpGBiDCsxBYCYd78rYjKdF3fvSsTV
+	TlQEQGwJwnKQhaAwgfoAZ5qZZI4ZJ9Op1dTR6UasWps3ZkANVOdx8f0/gIGgDWo6SRfHmfsIx8rBWnztpGAMPdu7f3KlLhh4QoCWCZAzQRgKiHWnHqrG0FgOPsyHdcp1Bkx4cLXRaxtZFSQVCgLkT1k+VyOGsDB5wTyOgmtgZgKKPbGjB0PlHAQgCNTfBTaNCzLM
+	2h8voV7tuBRs9i7OkYAzwAC8edWwALF45bgPb1+P8HwOtZ/i4As2dxCxD/FDIfPNwqoHY37FncA8zKA0O7vHvAcJNZLk8AZhldju1vavcgQMfZVXoAAAAASUVORK5CYII=">
+	
+	 <h2 class="project-tagline">A quick way to fetch data about your Github project</h2>
+     <a href="~/gitdata.js" style="color:white">GitData</a> downloads GitHub project data (PRs, Issues, etc.) for a given public repository into CSV format.
+    <ul>
+        GitHub Org: <input type="text" 
+								id="txtOrg" 
+								value="h2oai"
+								style="color:#000000" 
+								onchange="refreshDownloadLink();">
+        GitHub Repo: <input type="text" 
+								id="txtRepo" 
+								value="h2o-3" 
+								style="color:#000000" 
+								onchange="refreshDownloadLink();">
+	    PR Filter:
+	    <select id="txtStatus" value="open" style="color:#000000" onchange="refreshDownloadLink() ;">
+           <option style="color:#000000" value="">All PRs</option>
+		   <option style="color:#000000" value="open">Open PRs</option>
+		   <option style="color:#000000" value="close">Closed PRs</option>
+	    </select>
+    </ul>
+    <a id="downloadLink" href="~/spinner.html?user=twbs&amp;repo=bootstrap&amp;status=open" class="btn" style="color:white">Download GitHub PR Metadata
+	<a href="#" class="btn" style="color:white">View on GitHub</a>
+	<a href="https://developer.github.com/v3/" class="btn" style="color:white">Github API Overview</a>
+
+    <script async="" src="./index_files/analytics.js"></script><script>
+        function refreshDownloadLink() {
+	    var user = document.getElementById("txtOrg").value;
+	    var repo = document.getElementById("txtRepo").value;
+	    var status = document.getElementById("txtStatus").value;
+	    
+            var urlParts = window.location.href.split("/");
+	    var url = urlParts.splice(0,urlParts.length-1).join("/") + "/spinner.html?user=" + user + "&repo=" + repo + "&status=" + status;
+	    document.getElementById("downloadLink").href = url;
+	}
+	
+	refreshDownloadLink();
+    </script>
+
+</a></body></html>
