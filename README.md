@@ -2,7 +2,7 @@ GitData
 =======
 ![alt text](images/gitdata_image.png)
 
-**GitData** is a library (written in Typescript, HTML, and CSS) that helps software teams understand their GitHub project data (PRs, issues, milestones, etc.)
+**GitData** is a library (written in Typescript, HTML, and CSS) that helps software teams understand their GitHub project data (PRs, issues, milestones, etc.), which is quite useful when it comes to planning for releases.
 
 Building & Running GitData
 ===========================
